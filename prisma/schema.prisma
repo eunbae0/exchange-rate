@@ -1,12 +1,32 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/api/server/generated"
 }
 
 datasource db {
   provider = "postgresql"
   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model ExchangeLog {
+  id        String     @default(cuid()) @id
+}
+
+model ExchangeCountry {
+  id              String     @default(cuid()) @id
+  result          Int
+  cur_unit        String
+  ttb             String
+  tts             String
+  deal_bas_r      String
+  bkpr            String
+  yy_efee_r       String
+  ten_dd_efee_r   String
+  kftc_bkpr       String
+  kftc_deal_bas_r String
+  cur_nm          String
 }
 
 model Post {
